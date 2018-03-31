@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour {
 		float temp=Input.acceleration.x;	
 //		Debug.Log (temp);
 //		translate by x axis
-		transform.Translate(temp,0,0);
+		transform.Translate(temp*((float)0.5),0,0);
 
 		//rotating by y axis
 //		transform.Rotate(0,temp*10,0);
@@ -29,5 +29,9 @@ public class PlayerMovement : MonoBehaviour {
 //		if(Input.GetKey("a")){
 //			Rb.AddForce(-SideWaysForce*Time.deltaTime,0,0,ForceMode.VelocityChange);
 //		}
+
+		if (Rb.position.y < -1f) {
+			FindObjectOfType<GameManager> ().EndGame ();
+		}
 	}
 }
